@@ -1,0 +1,66 @@
+graph TD
+    A["🎯 Project Setup<br/>Herd creates new Laravel project<br/>SQLite database configured"] --> B["⚙️ Generate with Artisan"]
+
+    B --> B1["php artisan make:controller<br/>RegisterController"]
+    B --> B2["php artisan make:controller<br/>LoginController"]
+    B --> B3["php artisan make:controller<br/>LogoutController"]
+    B --> B4["php artisan make:middleware<br/>Authenticate"]
+    B --> B5["php artisan make:migration<br/>create_users_table"]
+    B --> B6["php artisan make:exception<br/>Handler"]
+
+    B1 --> C["📁 app/Http/Controllers/"]
+    B2 --> C
+    B3 --> C
+
+    B4 --> D["📁 app/Http/Middleware/"]
+    B6 --> E["📁 app/Exceptions/"]
+    B5 --> F["📁 database/migrations/"]
+
+    C --> G["👤 User Model<br/>app/Models/User.php<br/>Configure Authenticatable"]
+    D --> H["🔐 Middleware Setup<br/>Authenticate.php<br/>Protect routes"]
+    F --> I["📊 Users Table Migration<br/>Configure fields:<br/>- name, email, password"]
+
+    G --> J["🚀 Manual Creation<br/>VS Code"]
+    H --> J
+    I --> J
+
+    J --> J1["Create folder:<br/>resources/views/auth/"]
+    J --> J2["Create folder:<br/>resources/views/layouts/"]
+
+    J1 --> J3["Create: register.blade.php"]
+    J1 --> J4["Create: login.blade.php"]
+    J2 --> J5["Create: app.blade.php<br/>Base template"]
+
+    J3 --> K["📝 Edit Files"]
+    J4 --> K
+    J5 --> K
+
+    K --> K1["routes/web.php<br/>Define auth routes"]
+    K --> K2[".env file<br/>DB_CONNECTION=sqlite"]
+
+    K1 --> L["🛣️ Routes Defined<br/>- /register GET/POST<br/>- /login GET/POST<br/>- /logout POST"]
+    K2 --> M["✅ Database Config<br/>SQLite ready"]
+
+    L --> N["php artisan migrate<br/>Run migrations"]
+    M --> N
+
+    N --> O["💾 database.sqlite<br/>Open in TablePlus<br/>Verify users table"]
+
+    O --> P["🎨 Frontend Ready<br/>Blade templates"]
+
+    P --> Q["php artisan serve<br/>Start development server"]
+
+    Q --> R["🌐 Local App Running<br/>http://localhost:8000"]
+
+    style A fill:#e1f5ff
+    style B fill:#fff3e0
+    style C fill:#fff9c4
+    style D fill:#f1f8e9
+    style E fill:#f3e5f5
+    style F fill:#fce4ec
+    style G fill:#c8e6c9
+    style J fill:#ffccbc
+    style K fill:#b3e5fc
+    style N fill:#ffeb3b
+    style O fill:#81c784
+    style R fill:#4caf50,color:#fff
